@@ -1,0 +1,26 @@
+[Unit]
+Description=Sidekiq Worker for <%= "#{fetch(:application)} (#{fetch(:stage)})" %>
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=<%= File.join(fetch(:deploy_to), 'current') %>
+
+ExecStart=<%= File.join(fetch(:deploy_to), 'current') %>/bin/sidekiq <%= args.compact.join(' ') %>
+ExecReload=/bin/kill -TSTP $MAINPID
+ExecStop=/bin/kill -TERM $MAINPID
+
+StandardOutput=append:<%= fetch(:sidekiq_access_log) %>
+StandardError=append:<%= fetch(:sidekiq_error_log) %>
+
+<% fetch(:default_env).each do |key, value| %>
+Environment=<%= key %>=<%= value %>
+<% end %>
+Environment=MALLOC_ARENA_MAX=2
+
+Restart=always
+
+SyslogIdentifier=sidekiq
+
+[Install]
+WantedBy=multi-user.target
