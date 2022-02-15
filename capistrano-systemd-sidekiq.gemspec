@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Capistrano plugin for systemd sidekiq'
   spec.description   = spec.summary
 
-  spec.homepage      = 'https://github.com/norbertmaleckii/capistrano-systemd-sidekiq-rb'
+  spec.homepage      = 'https://github.com/norbertmaleckii/capistrano-systemd-sidekiq'
   spec.license       = 'MIT'
   spec.required_ruby_version = '>= 2.7.0'
 
