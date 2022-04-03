@@ -37,10 +37,10 @@ module Capistrano
 
         def sidekiq_compiled_service_template(process_name, options, index)
           args = []
-          args.push "--pidfile #{fetch(:sidekiq_pid)}"
+          # args.push "--pidfile #{fetch(:sidekiq_pid)}"
           args.push "--environment #{fetch(:sidekiq_env)}"
-          args.push "--logfile #{fetch(:sidekiq_access_log)}"
-          args.push "--concurrency #{fetch(:sidekiq_concurrency)}" if fetch(:sidekiq_concurrency)
+          # args.push "--logfile #{fetch(:sidekiq_access_log)}"
+          # args.push "--concurrency #{fetch(:sidekiq_concurrency)}" if fetch(:sidekiq_concurrency)
           args.push options
 
           search_paths = [
