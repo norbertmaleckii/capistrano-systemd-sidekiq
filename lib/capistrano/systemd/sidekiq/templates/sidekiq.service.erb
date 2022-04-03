@@ -16,7 +16,6 @@ StandardError=append:<%= fetch(:sidekiq_error_log) %>
 <% fetch(:default_env).each do |key, value| %>
 Environment=<%= key %>=<%= value %>
 <% end %>
-Environment=MALLOC_ARENA_MAX=2
 
 Restart=always
 
